@@ -2,6 +2,8 @@
 
 **Make CPU scheduling follow an explicit process weight.** I replaced xv6's round-robin selection with a deterministic stride scheduler and added a user interface for setting tickets and a CPU-tick budget.
 
+> **Measured CPU shares:** with 1:2:4 weights, the mean maximum target-share error fell from **23.81 percentage points** on stock round-robin to **0.14 percentage points** with stride scheduling, across five 300-tick runs per kernel. [Method, all samples, and reproduction](docs/measurements.md).
+
 Round-robin treats runnable processes equally. To express unequal shares, each process needs a weight and an accounting value that tells the scheduler how much service it has received. I added tickets, stride, and pass fields, selected the runnable process with the smallest pass, and connected timer interrupts to per-process tick accounting. Execution traces make the selection order, virtual distance, and termination budget visible.
 
 ![Worked example: 100 and 200 tickets produce strides of 1000 and 500; minimum-pass selection gives the smaller stride more frequent turns.](docs/assets/stride-accounting.svg)
@@ -46,7 +48,7 @@ scheduler_test
 
 The bundled executable runs five workloads. Each timer trace prints the selected PID, stride, tickets, the projected pass transition, and `ticks/end_ticks`. With equal 1,000-ticket children, the fresh run selected PIDs 4, 5, and 6 in turn with stride 100 until each reached its 20-tick budget. Unequal-ticket workloads showed smaller strides receiving more selections before the lower-weight children caught up. Low-ticket workloads exercised repeated rebasing and the 7,500 distance clamp. All five workloads reached their end markers and returned to the shell.
 
-These traces reproduce the report's scheduling and termination demonstrations; they are not a statistical fairness benchmark. Scheduling changes when a workload finishes or becomes runnable. Exit QEMU with **Ctrl+A, then X**.
+These traces reproduce the report's scheduling and termination demonstrations. The separate [controlled CPU-share comparison](docs/measurements.md) measures a fixed three-worker window against stock round-robin. Scheduling changes when a workload finishes or becomes runnable. Exit QEMU with **Ctrl+A, then X**.
 
 The source for `_scheduler_test`, `_debug_test`, and `_syscall_test` is absent from this repository: their prebuilt xv6 executables are checked in and included in the filesystem image. The Makefile's clean rule preserves them, but their internals cannot be rebuilt or reviewed here. Kernel source and the ordinary xv6 user programs do build from source.
 

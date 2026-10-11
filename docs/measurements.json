@@ -1,0 +1,160 @@
+{
+  "stock_round_robin": {
+    "runs": [
+      {
+        "ticks": [
+          100,
+          100,
+          100
+        ],
+        "share_percent": [
+          33.333333333333336,
+          33.333333333333336,
+          33.333333333333336
+        ],
+        "max_error_percentage_points": 23.80952380952381
+      },
+      {
+        "ticks": [
+          100,
+          100,
+          100
+        ],
+        "share_percent": [
+          33.333333333333336,
+          33.333333333333336,
+          33.333333333333336
+        ],
+        "max_error_percentage_points": 23.80952380952381
+      },
+      {
+        "ticks": [
+          100,
+          100,
+          100
+        ],
+        "share_percent": [
+          33.333333333333336,
+          33.333333333333336,
+          33.333333333333336
+        ],
+        "max_error_percentage_points": 23.80952380952381
+      },
+      {
+        "ticks": [
+          100,
+          100,
+          100
+        ],
+        "share_percent": [
+          33.333333333333336,
+          33.333333333333336,
+          33.333333333333336
+        ],
+        "max_error_percentage_points": 23.80952380952381
+      },
+      {
+        "ticks": [
+          100,
+          100,
+          100
+        ],
+        "share_percent": [
+          33.333333333333336,
+          33.333333333333336,
+          33.333333333333336
+        ],
+        "max_error_percentage_points": 23.80952380952381
+      }
+    ],
+    "mean_max_error_percentage_points": 23.80952380952381
+  },
+  "stride": {
+    "runs": [
+      {
+        "ticks": [
+          43,
+          86,
+          171
+        ],
+        "share_percent": [
+          14.333333333333334,
+          28.666666666666668,
+          57.0
+        ],
+        "max_error_percentage_points": 0.1428571428571459
+      },
+      {
+        "ticks": [
+          43,
+          86,
+          171
+        ],
+        "share_percent": [
+          14.333333333333334,
+          28.666666666666668,
+          57.0
+        ],
+        "max_error_percentage_points": 0.1428571428571459
+      },
+      {
+        "ticks": [
+          43,
+          86,
+          171
+        ],
+        "share_percent": [
+          14.333333333333334,
+          28.666666666666668,
+          57.0
+        ],
+        "max_error_percentage_points": 0.1428571428571459
+      },
+      {
+        "ticks": [
+          43,
+          86,
+          171
+        ],
+        "share_percent": [
+          14.333333333333334,
+          28.666666666666668,
+          57.0
+        ],
+        "max_error_percentage_points": 0.1428571428571459
+      },
+      {
+        "ticks": [
+          43,
+          86,
+          171
+        ],
+        "share_percent": [
+          14.333333333333334,
+          28.666666666666668,
+          57.0
+        ],
+        "max_error_percentage_points": 0.1428571428571459
+      }
+    ],
+    "mean_max_error_percentage_points": 0.1428571428571459
+  },
+  "baseline_commit": "eeb7b415dbcb12cc362d0783e41c3d1f44066b17",
+  "tickets": [
+    1000,
+    2000,
+    4000
+  ],
+  "target_share_percent": [
+    14.285714285714286,
+    28.571428571428573,
+    57.142857142857146
+  ],
+  "ticks_per_run": 300,
+  "runs_per_kernel": 5,
+  "virtual_cpus": 1,
+  "gcc": "9.5.0",
+  "qemu": "QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.16)",
+  "metric": "mean across runs of the largest absolute per-worker CPU-share error, in percentage points",
+  "extension_source_commit": "d91c4c92098a008eb9af97534e6a4b32750b33f0"
+}
