@@ -2,7 +2,9 @@
 
 **Make CPU scheduling follow an explicit process weight.** I replaced xv6's round-robin selection with a deterministic stride scheduler and added a user interface for setting tickets and a CPU-tick budget.
 
-Round-robin treats runnable processes equally. To express unequal shares, each process needs a weight and an accounting value that tells the scheduler how much service it has received. I added tickets, stride, and pass fields, selected the runnable process with the smallest pass, and connected timer interrupts to per-process tick accounting. Execution traces make the selection order, virtual distance, and termination budget visible. With 1:2:4 weights, maximum CPU-share error fell from **23.81 to 0.14 percentage points** against stock round-robin, averaged over five 300-tick runs per kernel. [Measurement details](docs/measurements.md).
+Round-robin treats runnable processes equally. To express unequal shares, each process needs a weight and an accounting value that tells the scheduler how much service it has received. I added tickets, stride, and pass fields, selected the runnable process with the smallest pass, and connected timer interrupts to per-process tick accounting. Execution traces make the selection order, virtual distance, and termination budget visible. A controlled 1:2:4 workload showed CPU shares closely following the requested weights compared with stock round-robin. [Measurement details](docs/measurements.md).
+
+![Maximum CPU-share error: stock round-robin 23.81 percentage points; stride 0.14. Five 300-tick runs per kernel with 1:2:4 weights and one CPU.](docs/assets/share-inline.svg)
 
 ![Worked example: 100 and 200 tickets produce strides of 1000 and 500; minimum-pass selection gives the smaller stride more frequent turns.](docs/assets/stride-accounting.svg)
 
